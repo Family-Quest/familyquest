@@ -8,7 +8,7 @@
     "generate-database-types": "dotenv -- npx supabase gen types typescript --project-id awpqfhhkuvqnjdbrrthb > database.types.ts"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.42.0",
+    "@supabase/supabase-js": "^2.42.3",
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.1"
   },
