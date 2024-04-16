@@ -1,0 +1,38 @@
+{
+  "form": {
+    "error": {
+      "email": {
+        "required": "L'adresse email est obligatoire",
+        "invalid": "L'adresse email n'est pas valide"
+      },
+      "password": {
+        "required": "Le mot de passe est obligatoire",
+        "invalid": "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial"
+      }
+    }
+  },
+  "login": {
+    "title": "Connectez-vous à votre espace"
+  },
+  "common": {
+    "email": "Email",
+    "password": "Mot de passe",
+    "login": "Connexion",
+    "loginWithGoogle": "Se connecter avec Google",
+    "not-have-account": "Pas encore de compte ? ",
+    "register": "Inscription",
+    "have-account": "Déjà un compte ?",
+    "app": {
+      "title": "Family Quest"
+    },
+    "register-success": "Inscription réussie, un mail de confirmation vous a été envoyé",
+    "redirect": "Redirection",
+    "error": {
+      "login": "Adresse email ou mot de passe erroné",
+      "email_not_confirmed": "Veuillez confirmer votre addresse email"
+    }
+  },
+  "register": {
+    "title": "Création de votre compte"
+  }
+}
