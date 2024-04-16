@@ -1,7 +1,0 @@
-{
-  "name": "familyquest",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "vue"
-}

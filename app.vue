@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-const { data, error } = useFetchTutorByUser()
+import { kApp } from 'konsta/vue'
 </script>
 
 <template>
-  <div class="w-full">
-    <pre>DATA : {{ data }}</pre>
-    <pre>ERROR : {{ error }}</pre>
-    <NuxtWelcome />
-  </div>
+  <kApp safe-areas theme="ios">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </kApp>
 </template>

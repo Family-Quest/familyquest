@@ -19,8 +19,7 @@
     ".nuxt",
     ".eslintrc",
     "types/database.types.ts",
-    "app.config.ts",
-    "nuxt.config.ts"
+    "*.config.ts"
   ],
   "rules": {
     "@typescript-eslint/brace-style": [

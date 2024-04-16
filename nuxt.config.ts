@@ -6,25 +6,30 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
+  build: {
+    transpile: ['konsta'],
+  },
   typescript: {
-    tsConfig: {
-      compilerOptions: {
-        baseUrl: './',
-      },
-    },
     typeCheck: true
   },
   ssr: false,
+  runtimeConfig: {
+    public: {
+      DEPLOY_PRIME_URL : process.env.DEPLOY_PRIME_URL,
+      LOGIN_REDIRECT_URL: '',
+    },
+  },
   modules: [
-    '@nuxtjs/ionic',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/supabase',
-    '@hebilicious/vue-query-nuxt'
+    '@nuxtjs/i18n',
+    '@hebilicious/vue-query-nuxt',
+    '@vee-validate/nuxt',
+    'nuxt-icon',
+    'nuxt-svgo',
   ],
-  ionic: {
-    css: {
-      utilities: true,
-    },
+  svgo: {
+    defaultImport: 'component'
   },
   supabase: {
     redirect: false,
@@ -33,10 +38,27 @@ export default defineNuxtConfig({
     configPath: './tailwind.config.ts',
     editorSupport: { autocompleteUtil: { as: 'tailwindClasses' }, generateConfig: true },
   },
-  runtimeConfig: {
-    public: {
-      DEPLOY_PRIME_URL : process.env.DEPLOY_PRIME_URL,
-      LOGIN_REDIRECT_URL: '',
-    },
+  i18n: {
+    defaultLocale: 'fr',
+    detectBrowserLanguage: false,
+    langDir: 'lang',
+    lazy: true,
+    locales: [
+      {
+        code: 'en',
+        dir: 'ltr',
+        file: 'en-EN.json',
+        iso: 'en-EN',
+        name: 'English',
+      },
+      {
+        code: 'fr',
+        dir: 'ltr',
+        file: 'fr-FR.json',
+        iso: 'fr-FR',
+        name: 'Français',
+      },
+    ],
+    vueI18n: './i18n.config.ts',
   },
 })
