@@ -4,7 +4,7 @@ const konstaConfig = require('konsta/config')
 // wrap config with konstaConfig config
 const config = konstaConfig({
   content: [
-    './components/*.{tsvue}',
+    './components/*.{ts,vue}',
     './pages/*.{ts,vue}',
     './components/**/*.{vue,ts}',
     './layouts/**/*.vue',

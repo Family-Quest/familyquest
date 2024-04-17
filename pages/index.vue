@@ -9,7 +9,7 @@ const runtimeConfig = useRuntimeConfig()
 const redirectTo = `${runtimeConfig.public.DEPLOY_PRIME_URL || runtimeConfig.public.LOGIN_REDIRECT_URL }/confirm`
 const supabase = useSupabaseClient()
 const toastIsOpen = ref(false)
-const loginErrorMessage = ref('')
+const toastMessage = ref('')
 
 const { errorMessage: errorMessageEmail, value: email } = useField<string>(
   'email',
@@ -40,10 +40,10 @@ const logIn = handleSubmit(async (values) => {
   })
 
   if (error) {
-    loginErrorMessage.value = error.message === 'Email not confirmed' ? t('common.error.email_not_confirmed') : t('common.error.login')
+    toastMessage.value = error.message === 'Email not confirmed' ? t('common.error.email_not_confirmed') : t('common.error.login')
     toggleToast()
     setTimeout(toggleToast, 7000)
-  } else await navigateTo('/player-selection')
+  } else await navigateTo('/member-selection')
 })
 
 
@@ -71,8 +71,8 @@ async function signInWithGoogle () {
             v-model="email"
             :error-messages="errorMessageEmail"
             icon="material-symbols:mail"
-            :label="t('common.email')"
-            :placeholder="t('common.email')"
+            :label="t('form.label.email')"
+            :placeholder="t('form.label.email')"
             required
             type="email"
           />
@@ -80,8 +80,8 @@ async function signInWithGoogle () {
             v-model="password"
             :error-messages="errorMessagePassword"
             icon="material-symbols:lock"
-            :label="t('common.password')"
-            :placeholder="t('common.password')"
+            :label="t('form.label.password')"
+            :placeholder="t('form.label.password')"
             required
             type="password"
           />
@@ -108,7 +108,7 @@ async function signInWithGoogle () {
       </div>
     </kBlock>
     <kToast :opened="toastIsOpen" position="right">
-      <span class="flex-1">{{ loginErrorMessage }}</span>
+      <span class="flex-1">{{ toastMessage }}</span>
     </kToast>
   </kPage>
 </template>
