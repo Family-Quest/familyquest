@@ -3,7 +3,7 @@ const user = useSupabaseUser()
 const { t } = useI18n()
 
 watch(user, async () => {
-  await (user.value ? navigateTo('/player-selection') : navigateTo('/'))
+  await (user.value ? navigateTo('/member-selection') : navigateTo('/'))
 // eslint-disable-next-line @typescript-eslint/naming-convention
 }, { immediate: true })
 </script>

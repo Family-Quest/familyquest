@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import { kBlock, kButton, kList, kPage } from 'konsta/vue'
-import { useNotifications } from '~/composables/notification'
+import { kBlock, kButton, kList, kPage, kToast } from 'konsta/vue'
 import type { UserForm } from '~/types/user'
 
 const { t } = useI18n()
 
 const { handleSubmit } = useForm<UserForm>()
-const { notifyError } = useNotifications()
 const runtimeConfig = useRuntimeConfig()
 const redirectTo = `${runtimeConfig.public.DEPLOY_PRIME_URL || runtimeConfig.public.LOGIN_REDIRECT_URL }/confirm`
 const supabase = useSupabaseClient()
+const toastIsOpen = ref(false)
+const toastMessage = ref('')
 
 const { errorMessage: errorMessageEmail, value: email } = useField<string>(
   'email',
@@ -29,13 +29,21 @@ const { errorMessage: errorMessagePassword, value: password } = useField<string>
   },
 )
 
+function toggleToast () {
+  toastIsOpen.value = !toastIsOpen.value
+}
+
 const signIn = handleSubmit(async (values) => {
   const { error } = await supabase.auth.signUp({
     email: values.email,
     password: values.password,
   })
 
-  if (error) notifyError(error.message)
+  if (error) {
+    toastMessage.value = t('common.error.register')
+    toggleToast()
+    setTimeout(toggleToast, 7000)
+  } else await navigateTo('/')
 })
 
 
@@ -63,8 +71,8 @@ async function signInWithGoogle () {
             v-model="email"
             :error-messages="errorMessageEmail"
             icon="material-symbols:mail"
-            :label="t('common.email')"
-            :placeholder="t('common.email')"
+            :label="t('form.label.email')"
+            :placeholder="t('form.label.email')"
             required
             type="email"
           />
@@ -72,8 +80,8 @@ async function signInWithGoogle () {
             v-model="password"
             :error-messages="errorMessagePassword"
             icon="material-symbols:lock"
-            :label="t('common.password')"
-            :placeholder="t('common.password')"
+            :label="t('form.label.password')"
+            :placeholder="t('form.label.password')"
             required
             type="password"
           />
@@ -99,5 +107,8 @@ async function signInWithGoogle () {
         </nuxt-link>
       </div>
     </kBlock>
+    <kToast :opened="toastIsOpen" position="right">
+      <span class="flex-1">{{ toastMessage }}</span>
+    </kToast>
   </kPage>
 </template>

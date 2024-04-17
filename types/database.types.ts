@@ -12,132 +12,173 @@ export type Database = {
       character: {
         Row: {
           avatar: Database["public"]["Enums"]["AvatarName"]
-          experience: number
+          createdAt: string
+          experience: number | null
           family: string
-          gold: number
+          gold: number | null
           id: string
-          password: string
-          pseudo: string
+          member: string
         }
         Insert: {
           avatar: Database["public"]["Enums"]["AvatarName"]
-          experience?: number
+          createdAt?: string
+          experience?: number | null
           family: string
-          gold?: number
+          gold?: number | null
           id?: string
-          password: string
-          pseudo: string
+          member: string
         }
         Update: {
           avatar?: Database["public"]["Enums"]["AvatarName"]
-          experience?: number
+          createdAt?: string
+          experience?: number | null
           family?: string
-          gold?: number
+          gold?: number | null
           id?: string
-          password?: string
-          pseudo?: string
+          member?: string
         }
         Relationships: [
           {
-            foreignKeyName: "public_character_family_fkey"
+            foreignKeyName: "character_family_fkey"
             columns: ["family"]
             isOneToOne: false
             referencedRelation: "family"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "character_member_fkey"
+            columns: ["member"]
+            isOneToOne: false
+            referencedRelation: "member"
             referencedColumns: ["id"]
           },
         ]
       }
       family: {
         Row: {
-          creator: string
           id: string
           name: string
         }
         Insert: {
-          creator: string
           id?: string
           name: string
         }
         Update: {
-          creator?: string
           id?: string
           name?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "public_family_creator_fkey"
-            columns: ["creator"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       history: {
         Row: {
-          character: string
+          character: string | null
           createdAt: string
           family: string
           gold: number
           id: string
+          member: string | null
           quest: string | null
           reward: string | null
-          tutor: string | null
         }
         Insert: {
-          character: string
+          character?: string | null
           createdAt?: string
           family: string
           gold: number
           id?: string
+          member?: string | null
           quest?: string | null
           reward?: string | null
-          tutor?: string | null
         }
         Update: {
-          character?: string
+          character?: string | null
           createdAt?: string
           family?: string
           gold?: number
           id?: string
+          member?: string | null
           quest?: string | null
           reward?: string | null
-          tutor?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "public_history_reward_fkey"
-            columns: ["reward"]
-            isOneToOne: false
-            referencedRelation: "reward"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "public_point_character_fkey"
+            foreignKeyName: "history_character_fkey"
             columns: ["character"]
             isOneToOne: false
             referencedRelation: "character"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "public_point_family_fkey"
+            foreignKeyName: "history_family_fkey"
             columns: ["family"]
             isOneToOne: false
             referencedRelation: "family"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "public_point_task_fkey"
+            foreignKeyName: "history_member_fkey"
+            columns: ["member"]
+            isOneToOne: false
+            referencedRelation: "member"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "history_quest_fkey"
             columns: ["quest"]
             isOneToOne: false
             referencedRelation: "quest"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "public_point_tutor_fkey"
-            columns: ["tutor"]
+            foreignKeyName: "history_reward_fkey"
+            columns: ["reward"]
             isOneToOne: false
-            referencedRelation: "tutor"
+            referencedRelation: "reward"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      member: {
+        Row: {
+          createdAt: string
+          family: string
+          id: string
+          password: string
+          pseudo: string
+          role: Database["public"]["Enums"]["MemberRole"]
+          supabase_user: string | null
+        }
+        Insert: {
+          createdAt?: string
+          family: string
+          id?: string
+          password: string
+          pseudo: string
+          role: Database["public"]["Enums"]["MemberRole"]
+          supabase_user?: string | null
+        }
+        Update: {
+          createdAt?: string
+          family?: string
+          id?: string
+          password?: string
+          pseudo?: string
+          role?: Database["public"]["Enums"]["MemberRole"]
+          supabase_user?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "member_family_fkey"
+            columns: ["family"]
+            isOneToOne: false
+            referencedRelation: "family"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "public_member_supabase_user_fkey"
+            columns: ["supabase_user"]
+            isOneToOne: false
+            referencedRelation: "users"
             referencedColumns: ["id"]
           },
         ]
@@ -145,47 +186,50 @@ export type Database = {
       quest: {
         Row: {
           character: string | null
-          created_at: string
-          description: string | null
+          createdAt: string
+          description: string
           family: string
           gold: number
           id: string
+          isRequired: boolean
           name: string
-          rank: number | null
-          status: string | null
+          rank: number
+          status: Database["public"]["Enums"]["QuestStatus"]
         }
         Insert: {
           character?: string | null
-          created_at?: string
-          description?: string | null
+          createdAt?: string
+          description: string
           family: string
           gold: number
           id?: string
+          isRequired?: boolean
           name: string
-          rank?: number | null
-          status?: string | null
+          rank: number
+          status?: Database["public"]["Enums"]["QuestStatus"]
         }
         Update: {
           character?: string | null
-          created_at?: string
-          description?: string | null
+          createdAt?: string
+          description?: string
           family?: string
           gold?: number
           id?: string
+          isRequired?: boolean
           name?: string
-          rank?: number | null
-          status?: string | null
+          rank?: number
+          status?: Database["public"]["Enums"]["QuestStatus"]
         }
         Relationships: [
           {
-            foreignKeyName: "public_quest_character_fkey"
+            foreignKeyName: "quest_character_fkey"
             columns: ["character"]
             isOneToOne: false
             referencedRelation: "character"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "public_task_family_fkey"
+            foreignKeyName: "quest_family_fkey"
             columns: ["family"]
             isOneToOne: false
             referencedRelation: "family"
@@ -195,77 +239,41 @@ export type Database = {
       }
       reward: {
         Row: {
-          created_at: string
+          createdAt: string
           description: string
-          family: string | null
+          family: string
           gold: number
           id: string
           name: string
-          rank: number | null
+          rank: number
+          status: Database["public"]["Enums"]["RewardStatus"]
         }
         Insert: {
-          created_at?: string
+          createdAt?: string
           description: string
-          family?: string | null
+          family: string
           gold: number
           id?: string
           name: string
-          rank?: number | null
+          rank: number
+          status?: Database["public"]["Enums"]["RewardStatus"]
         }
         Update: {
-          created_at?: string
+          createdAt?: string
           description?: string
-          family?: string | null
+          family?: string
           gold?: number
           id?: string
           name?: string
-          rank?: number | null
+          rank?: number
+          status?: Database["public"]["Enums"]["RewardStatus"]
         }
         Relationships: [
           {
-            foreignKeyName: "public_activity_family_fkey"
+            foreignKeyName: "reward_family_fkey"
             columns: ["family"]
             isOneToOne: false
             referencedRelation: "family"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      tutor: {
-        Row: {
-          family: string
-          id: string
-          password: string
-          pseudo: string
-          user: string
-        }
-        Insert: {
-          family: string
-          id?: string
-          password: string
-          pseudo: string
-          user: string
-        }
-        Update: {
-          family?: string
-          id?: string
-          password?: string
-          pseudo?: string
-          user?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "public_administrator_family_fkey"
-            columns: ["family"]
-            isOneToOne: false
-            referencedRelation: "family"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "public_administrator_user_fkey"
-            columns: ["user"]
-            isOneToOne: false
-            referencedRelation: "users"
             referencedColumns: ["id"]
           },
         ]
@@ -281,7 +289,10 @@ export type Database = {
       }
     }
     Enums: {
-      AvatarName: "drakus" | "elara" | "erevan" | "fenrir"
+      AvatarName: "elara" | "drakus" | "erevan" | "fenrir"
+      MemberRole: "player" | "tutor"
+      QuestStatus: "toDo" | "inProgress" | "done" | "validated"
+      RewardStatus: "active" | "inactive"
     }
     CompositeTypes: {
       [_ in never]: never

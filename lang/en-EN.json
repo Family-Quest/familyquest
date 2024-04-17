@@ -1,3 +1,65 @@
 {
-
+  "common": {
+    "create": "Create",
+    "error": {
+      "email_not_confirmed": "Please confirm your email address",
+      "login": "Wrong email address or password",
+      "register": "An error occurred during registration. \nTry Again !",
+      "save": "Oops! \nSomething went wrong!"
+    },
+    "have-account": "Already have an account?",
+    "join": "Join",
+    "login": "Connection",
+    "loginWithGoogle": "Sign in with Google",
+    "not-have-account": "No account yet?",
+    "player": "Player",
+    "redirect": "Redirect",
+    "register": "Registration",
+    "tutor": "Tutor"
+  },
+  "family": {
+    "add": {
+      "title": "Creating your family"
+    },
+    "join": {
+      "title": "Join a family"
+    }
+  },
+  "form": {
+    "error": {
+      "code": {
+        "length": "The code must be 6 digits long"
+      },
+      "email": {
+        "invalid": "Email address is invalid",
+        "required": "Email address is required"
+      },
+      "family-name": {
+        "required": "Last name is required"
+      },
+      "password": {
+        "required": "Password is required"
+      },
+      "pseudo": {
+        "required": "The nickname is obligatory"
+      }
+    },
+    "hint": {
+      "code": "6-digit code (ex: 123456)"
+    },
+    "label": {
+      "code": "Tutor session code",
+      "email": "E-mail",
+      "family-name": "Surname",
+      "password": "Password",
+      "pseudo": "Pseudo"
+    }
+  },
+  "page": {
+    "member": {
+      "list": {
+        "title": "List of your family members"
+      }
+    }
+  }
 }

@@ -6,33 +6,64 @@
         "invalid": "L'adresse email n'est pas valide"
       },
       "password": {
-        "required": "Le mot de passe est obligatoire",
-        "invalid": "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial"
+        "required": "Le mot de passe est obligatoire"
+      },
+      "family-name": {
+        "required": "Le nom de famille est obligatoire"
+      },
+      "pseudo": {
+        "required": "Le pseudo est obligatoire"
+      },
+      "code": {
+        "length": "Le code doit faire 6 chiffres"
       }
+    },
+    "label": {
+      "email": "Email",
+      "password": "Mot de passe",
+      "family-name": "Nom de famille",
+      "pseudo": "Pseudo",
+      "code": "Code de la session tuteur"
+    },
+    "hint": {
+      "code": "Code à 6 chiffres (ex: 123456)"
     }
   },
-  "login": {
-    "title": "Connectez-vous à votre espace"
-  },
+  "login": {},
   "common": {
-    "email": "Email",
-    "password": "Mot de passe",
     "login": "Connexion",
     "loginWithGoogle": "Se connecter avec Google",
     "not-have-account": "Pas encore de compte ? ",
     "register": "Inscription",
     "have-account": "Déjà un compte ?",
-    "app": {
-      "title": "Family Quest"
-    },
-    "register-success": "Inscription réussie, un mail de confirmation vous a été envoyé",
+    "app": {},
     "redirect": "Redirection",
     "error": {
       "login": "Adresse email ou mot de passe erroné",
-      "email_not_confirmed": "Veuillez confirmer votre addresse email"
+      "email_not_confirmed": "Veuillez confirmer votre addresse email",
+      "register": "Une erreur est survenue lors de votre inscription. Veuillez réessayer !",
+      "save": "Oups! Quelque chose s'est mal passé!"
+    },
+    "join": "Rejoindre",
+    "create": "Créer",
+    "tutor": "Tuteur",
+    "player": "Joueur"
+  },
+  "register": {},
+  "family": {
+    "join": {
+      "title": "Rejoindre une famille"
+    },
+    "add": {
+      "title": "Création de votre famille"
     }
   },
-  "register": {
-    "title": "Création de votre compte"
+  "page": {
+    "member-selection": {},
+    "member": {
+      "list": {
+        "title": "Selection du membre de la famille"
+      }
+    }
   }
 }
