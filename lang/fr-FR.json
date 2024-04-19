@@ -15,7 +15,20 @@
         "required": "Le pseudo est obligatoire"
       },
       "code": {
-        "length": "Le code doit faire 6 chiffres"
+        "length": "Le code doit faire 6 chiffres",
+        "invalid": "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial"
+      },
+      "quest": {
+        "name": {
+          "required": "Le nom de la quête est obligatoire"
+        },
+        "description": {
+          "required": "La description de la quête est obligatoire"
+        },
+        "golds": {
+          "required": "Le nombre de pièces d'or est obligatoire",
+          "minValue": "Le nombre de pièce d'or doit être suppérieur à 0"
+        }
       }
     },
     "label": {
@@ -23,7 +36,19 @@
       "password": "Mot de passe",
       "family-name": "Nom de famille",
       "pseudo": "Pseudo",
-      "code": "Code de la session tuteur"
+      "code": "Code de la session tuteur",
+      "quest": {
+        "name": "Nom",
+        "description": "Description",
+        "golds": "Pièces d'or"
+      }
+    },
+    "placeholder": {
+      "quest": {
+        "name": "Le nom de la quête.",
+        "description": "Description de la quête.",
+        "golds": "Récompense de la quête."
+      }
     },
     "hint": {
       "code": "Code à 6 chiffres (ex: 123456)"
@@ -47,10 +72,13 @@
     "join": "Rejoindre",
     "create": "Créer",
     "tutor": "Tuteur",
-    "player": "Joueur"
+    "player": "Joueur",
+    "add": "Ajouter",
+    "cancel": "Annuler"
   },
   "register": {},
   "family": {
+    "title": "Création de votre compte",
     "join": {
       "title": "Rejoindre une famille"
     },
@@ -63,6 +91,26 @@
     "member": {
       "list": {
         "title": "Selection du membre de la famille"
+      },
+      "add": "Ajouter",
+      "cancel": "Annuler"
+    }
+  },
+  "quest": {
+    "admin": {
+      "form": {
+        "create": {
+          "title": "Saissez les informations relative à la quête que vous souhaitez créer."
+        }
+      }
+    }
+  },
+  "reward": {
+    "admin": {
+      "form": {
+        "create": {
+          "title": "Saisissez les informations relative à la récompense."
+        }
       }
     }
   }
