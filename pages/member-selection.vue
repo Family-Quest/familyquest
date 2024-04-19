@@ -8,6 +8,9 @@ definePageMeta({
 })
 
 const { data, isFetched, isLoading } = useFetchFamilyByUser()
+function moveToAdmin () {
+  void navigateTo('/admin')
+}
 </script>
 
 <template>
@@ -17,5 +20,6 @@ const { data, isFetched, isLoading } = useFetchFamilyByUser()
     </kBlock>
     <MemberList v-else-if="isFetched && data" :family-id="data.id" />
     <FamilyCreationForm v-else />
+    <k-button @click="moveToAdmin">admin</k-button>
   </kPage>
 </template>

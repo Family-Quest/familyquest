@@ -5,7 +5,7 @@ import { kApp } from 'konsta/vue'
 <template>
   <kApp safe-areas theme="ios">
     <NuxtLayout>
-      <NuxtPage />
+      <NuxtPage/>
     </NuxtLayout>
   </kApp>
 </template>
